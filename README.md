@@ -29,8 +29,6 @@ Go to the project directory
   cd C-Project-Creator
 ```
 
-Before compiling the project you must edit Makefile file.
-
 Compile project
 
 ```bash
