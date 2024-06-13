@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <string.h>
 #ifdef _WIN32
 #include <direct.h>
 #define MKDIR(path) _mkdir(path)
@@ -25,21 +26,25 @@ int main(int argc, char **argv){
     createFile(SRC_FOLDER, "main.c", "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, world!\\n\");\n    return 0;\n}\n");
     createFile(INCLUDE_FOLDER, "main.h", "#ifndef MAIN_H\n#define MAIN_H\n\n\n#endif\n");
     createFile(ASSETS_FOLDER, "example.txt", "This is a sample text");
-    createFile("", "Makefile", "CC=gcc\nSOURCE_FILE=WRITE_YOUR_SOURCE_FILE_HERE\nOUTPUT_FILE=WRITE_YOUR_OUTPUT_FILE_NAME\n\nmake:\n\t$(CC) $(SOURCE_FILE) -o $(OUTPUT_FILE)\n\nclean:\n\trm -rf $(OUTPUT_FILE)");
+    createFile(NULL, "Makefile", "CC=gcc\nSOURCE_FILE=WRITE_YOUR_SOURCE_FILE_HERE\nOUTPUT_FILE=WRITE_YOUR_OUTPUT_FILE_NAME\n\nmake:\n\t$(CC) $(SOURCE_FILE) -o $(OUTPUT_FILE)\n\nclean:\n\trm -rf $(OUTPUT_FILE)");
     
     return 0;
 }
 
 void createFile(const char *folder, const char *filename, const char *content){
     char filepath[256];
-    snprintf(filepath, sizeof(filepath), "%s/%s", folder, filename);
+    if (folder != NULL && strlen(folder) > 0) {
+        snprintf(filepath, sizeof(filepath), "%s/%s", folder, filename);
+    } else {
+        snprintf(filepath, sizeof(filepath), "%s", filename);
+    }
 
     FILE *file = fopen(filepath, "w");
     if (file == NULL) {
-        printf("Files couldn't created: %s\n", filepath);
+        printf("File couldn't created: %s\n", filepath);
         return;
     }
     fprintf(file, "%s", content);
     fclose(file);
-    printf("Files created: %s\n", filepath);
+    printf("File created: %s\n", filepath);
 }
