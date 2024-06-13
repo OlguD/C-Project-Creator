@@ -24,7 +24,7 @@ int main(int argc, char **argv){
     }
 
     createFile(TEST_FOLDER, "test_main.c", "#include \"main.h\"\n\nvoid setUp(void){\n\t//Test setup code\n}\n\nvoid tearDown(void){\n\t//Test cleanup code\n}\n\n\nint main(void){\n\n}");
-    createFile(SRC_FOLDER, "main.c", "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, world!\\n\");\n    return 0;\n}\n");
+    createFile(SRC_FOLDER, "main.c", "#include <stdio.h>\n#include \"include/main.h\"\n\nint main() {\n    printf(\"Hello, world!\\n\");\n    return 0;\n}\n");
     createFile(INCLUDE_FOLDER, "main.h", "#ifndef MAIN_H\n#define MAIN_H\n\n\n#endif\n");
     createFile(ASSETS_FOLDER, "example.txt", "This is a sample text");
     createFile(NULL, "Makefile", "CC=gcc\nSOURCE_FILE=WRITE_YOUR_SOURCE_FILE_HERE\nOUTPUT_FILE=WRITE_YOUR_OUTPUT_FILE_NAME\n\nmake:\n\t$(CC) $(SOURCE_FILE) -o $(OUTPUT_FILE)\n\nclean:\n\trm -rf $(OUTPUT_FILE)");
