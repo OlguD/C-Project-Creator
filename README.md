@@ -2,6 +2,10 @@
 
 This project allows you to quickly create a C project. It runs smoothly on Windows and Linux computers
 
+## Screenshots
+
+![Output](assets/creator-ss.png)
+
 ## Installation
 
 Clone repository in your machine
@@ -26,6 +30,7 @@ Go to the project directory
 ```
 
 Before compiling the project you must edit Makefile file.
+
 Compile project
 
 ```bash
