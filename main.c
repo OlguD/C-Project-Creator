@@ -23,7 +23,7 @@ int main(int argc, char **argv){
         }
     }
 
-    createFile(TEST_FOLDER, "test_main.c", "#include main.h\n\nvoid setUp(void){\n//Test setup code\n}\n\nvoid tearDown(void){\n//Test cleanup code\n}\n\n\nint main(void){\n}");
+    createFile(TEST_FOLDER, "test_main.c", "#include \"main.h\"\n\nvoid setUp(void){\n\t//Test setup code\n}\n\nvoid tearDown(void){\n\t//Test cleanup code\n}\n\n\nint main(void){\n\n}");
     createFile(SRC_FOLDER, "main.c", "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, world!\\n\");\n    return 0;\n}\n");
     createFile(INCLUDE_FOLDER, "main.h", "#ifndef MAIN_H\n#define MAIN_H\n\n\n#endif\n");
     createFile(ASSETS_FOLDER, "example.txt", "This is a sample text");
